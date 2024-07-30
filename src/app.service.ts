@@ -12,8 +12,11 @@ export class AppService {
 
     const args = ['-r', resourceDir, '-e', embyDir, '-p', password];
 
-    const proc = spawnSync('sh', ['./scripts/move.sh', ...args]);
-
-    return proc.stdout;
+    try {
+      const proc = spawnSync('sh', ['./scripts/move.sh', ...args]);
+      return proc.stdout;
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

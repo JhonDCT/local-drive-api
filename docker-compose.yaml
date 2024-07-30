@@ -3,7 +3,10 @@ services:
     build: .
     environment:
       - RESOURCES_DIR=/home/kryshi/emby/movies
-      - EMBY_DIR=/home/kryshi/emby/movies
+      - EMBY_DIR=/mnt/library/movies
       - PASSWD_SUDO=Xanandra123
+    volumes:
+      - /home/kryshi/emby/movies:/home/kryshi/emby/movies
+      - /mnt/library/movies:/mnt/library/movies
     ports:
       - 3000:3000
