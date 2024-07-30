@@ -8,6 +8,8 @@ export class AppService {
     const embyDir = process.env.EMBY_DIR;
     const password = process.env.PASSWD_SUDO;
 
+    console.log('Resource dir:', resourceDir);
+
     const args = ['-r', resourceDir, '-e', embyDir, '-p', password];
 
     const proc = spawnSync('sh', ['./scripts/move.sh', ...args]);

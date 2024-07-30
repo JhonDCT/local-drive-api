@@ -1,5 +1,9 @@
 services:
   app:
     build: .
+    environment:
+      - RESOURCES_DIR=/home/kryshi/emby/movies
+      - EMBY_DIR=/home/kryshi/emby/movies
+      - PASSWD_SUDO=Xanandra123
     ports:
       - 3000:3000
