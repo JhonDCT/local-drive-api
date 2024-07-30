@@ -7,7 +7,7 @@ export class AppController {
 
   @Get()
   async getHello(): Promise<string> {
-    const stream = await this.appService.getHello();
+    const stream = this.appService.getHello();
     const text = await new Response(stream).text();
 
     return text;
