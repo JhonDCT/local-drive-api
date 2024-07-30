@@ -10,7 +10,7 @@ export class AppService {
 
     const args = ['-r', resourceDir, '-e', embyDir, '-p', password];
 
-    const proc = spawn('sh', ['./scripts/moqqqsv.sh', ...args]);
+    const proc = spawn('sh', ['move.sh', ...args]);
 
     proc.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
