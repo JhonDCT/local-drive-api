@@ -1,5 +1,5 @@
 # Use an official Node.js image for the ARM architecture
-FROM arm64v8/node:lts-alpine3.20
+FROM arm32v7/node:lts-alpine3.20
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
