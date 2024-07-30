@@ -4,22 +4,20 @@ import { writeFile } from 'node:fs';
 
 @Injectable()
 export class AppService {
-  getHello(): Promise<string> {
+  move(): Promise<string> {
     const resourceDir = process.env.RESOURCES_DIR;
     const embyDir = process.env.EMBY_DIR;
     const password = process.env.PASSWD_SUDO;
 
     const args = ['-r', resourceDir, '-e', embyDir, '-p', password];
-    const proc = spawn('sh', ['moves.sh', ...args]);
+    const proc = spawn('sh', ['move.sh', ...args]);
 
     return new Promise((resolve, reject) => {
       proc.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
         resolve(data);
       });
 
       proc.stderr.on('data', (data) => {
-        console.error(`stderr: ${data}`);
         reject(data);
       });
     });
@@ -33,6 +31,7 @@ export class AppService {
         if (err) {
           reject(err);
         } else {
+          this.move();
           resolve('File uploaded successfully');
         }
       });

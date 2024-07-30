@@ -15,7 +15,7 @@ export class AppController {
   @Get()
   async getHello(): Promise<string> {
     try {
-      const stream = await this.appService.getHello();
+      const stream = await this.appService.move();
       const text = await new Response(stream).text();
 
       return text;
