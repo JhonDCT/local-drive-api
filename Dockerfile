@@ -5,7 +5,7 @@ FROM arm32v7/node:lts-alpine3.20
 WORKDIR /usr/src/app
 
 # Copy package.json and bun.lockb files
-COPY package*.json ./
+COPY . .
 
 # Install dependencies
 RUN npm install
