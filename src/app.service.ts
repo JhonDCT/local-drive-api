@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { spawnSync } from 'node:child_process';
 
 @Injectable()
 export class AppService {
-  async getHello(): Promise<ReadableStream<Uint8Array>> {
-    const resourceDir = Bun.env.RESOURCES_DIR;
-    const embyDir = Bun.env.EMBY_DIR;
-    const password = Bun.env.PASSWD_SUDO;
+  async getHello(): Promise<Buffer> {
+    const resourceDir = process.env.RESOURCES_DIR;
+    const embyDir = process.env.EMBY_DIR;
+    const password = process.env.PASSWD_SUDO;
 
     const args = ['-r', resourceDir, '-e', embyDir, '-p', password];
 
-    const proc = Bun.spawn(['sh', './scripts/move.sh', ...args]);
+    const proc = spawnSync('sh', ['./scripts/move.sh', ...args]);
 
     return proc.stdout;
   }
