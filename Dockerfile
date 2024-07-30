@@ -9,7 +9,7 @@ FROM arm32v7/node:lts-alpine3.20
 WORKDIR /usr/src/app
 COPY --from=build /usr/src/app/package*.json ./
 COPY --from=build /usr/src/app/dist ./dist
-COPY --from=build /usr/src/app/scripts ./dist/scripts
+COPY --from=build /usr/src/app/scripts/ ./
 RUN npm install --only=production
 EXPOSE 3000
 CMD ["node", "dist/main.js"]

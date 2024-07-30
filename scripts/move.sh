@@ -12,7 +12,8 @@ done
 
 # sudo password in line 
 # echo Xanandra123 | sudo -S <command>
-echo "$password" | sudo -S mv -r "$resource_dir" "$emby_dir"
+# echo "$password" | sudo -S mv -r "$resource_dir" "$emby_dir"
+mv -v "$resource_dir" "$emby_dir"
 
 echo "Resource dir: $resource_dir"
 echo "Password: $password"

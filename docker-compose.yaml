@@ -2,8 +2,8 @@ services:
   app:
     build: .
     environment:
-      - RESOURCES_DIR=/home/kryshi/emby/movies
-      - EMBY_DIR=/mnt/library/movies
+      - RESOURCES_DIR=/home/kryshi/emby/movies/*
+      - EMBY_DIR=/mnt/library/movies/
       - PASSWD_SUDO=Xanandra123
     volumes:
       - /home/kryshi/emby/movies:/home/kryshi/emby/movies
