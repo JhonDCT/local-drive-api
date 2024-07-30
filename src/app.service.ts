@@ -23,7 +23,7 @@ export class AppService {
     });
   }
 
-  upload(file): Promise<string> {
+  upload(file: Express.Multer.File): Promise<string> {
     const resourceDir = process.env.RESOURCES_DIR;
 
     return new Promise((resolve, reject) => {

@@ -13,7 +13,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  async getHello(): Promise<string> {
+  async move(): Promise<string> {
     try {
       const stream = await this.appService.move();
       const text = await new Response(stream).text();
@@ -28,9 +28,7 @@ export class AppController {
 
   @Post()
   @UseInterceptors(FileInterceptor('file'))
-  upload(@UploadedFile() file) {
-    console.log(file);
-
+  upload(@UploadedFile() file: Express.Multer.File): Promise<string> {
     return this.appService.upload(file);
   }
 }
